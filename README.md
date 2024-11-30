@@ -11,14 +11,7 @@ Example of list of aircraft (with fake usernames)
 
 
 Example of a flight plan:
-Username: @username1
-Callsign: UAE1219
-Aircraft: B77W
-Flight Rules: IFR
-Departing: IRFD
-Arriving: ITKO
-Route: GPS Direct
-Flight Level: 050
+![image](https://github.com/user-attachments/assets/0dd9105a-4eaa-46e1-a14f-f6ae7582b416)
 
 This is all public code, you may edit it and customize it or add to it (after you credit me in the code.)
 Please do not sell, redistribute or otherwise edit the code for malicious intent, you can either download the .exe (which might piss off your antivirus) or manually run the source code .py in Visual Studio Code. 
