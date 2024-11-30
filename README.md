@@ -1,9 +1,9 @@
 ![atc24logo](https://github.com/user-attachments/assets/09a94511-68ac-4df2-aed5-e5f76c1b5ae7)
 
-In the initial release, copy flight plans from the flight-plan channel in the Discord and paste it into the box. Then, after you click the Auto paste flight button, it will automatically add the flight to the list.
+In the initial release, copy flight plans from the flight-plan channel in the Discord and paste it into the box. Then, after you click the Auto Paste flight button, it will automatically add the flight to the list.
 
 You can edit each flight (or re-upload it to change the auto-generated squawk code.)
-All emergency codes such as 7500, 7600, and 7700 cannot be generated but all VFR flights automatically set the squawk to 1200.
+All emergency codes such as 7500, 7600, and 7700 cannot be generated but all VFR flights automatically set the squawk to 1200. No two squawk numbers can repeat.
 
 Example of a list of aircraft:
 
