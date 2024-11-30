@@ -8,23 +8,20 @@ class FlightManagerApp:
         self.root = root
         self.root.title("Flight Manager")
         self.root.geometry("900x600")
-        self.flights = []  # Store flights as dictionaries
-        self.used_squawk_codes = set()  # To track already used squawk codes
+        self.flights = [] 
+        self.used_squawk_codes = set() 
 
         # Colors
-        self.bg_color = "#1B3B6F"  # Background color (dark blue)
-        self.text_color = "#000000"  # Text color (white)
-        self.button_color = "#4A90E2"  # Button color (light blue)
-        self.highlight_color = "#D6E4F0"  # Highlight color (very light blue)
+        self.bg_color = "#1B3B6F" 
+        self.text_color = "#000000"  
+        self.button_color = "#4A90E2" 
+        self.highlight_color = "#D6E4F0" 
 
-        # Apply background color
         self.root.configure(bg=self.bg_color)
 
-        # Create UI
         self.create_ui()
 
     def create_ui(self):
-        # Title
         title_label = tk.Label(
             self.root,
             text="Flight Manager",
@@ -34,7 +31,6 @@ class FlightManagerApp:
         )
         title_label.pack(fill="x", pady=10)
 
-        # Input Frame (for entering flight details manually)
         input_frame = tk.Frame(self.root, bg=self.bg_color)
         input_frame.pack(fill="x", pady=10, padx=10)
 
@@ -48,7 +44,6 @@ class FlightManagerApp:
             entry.grid(row=1, column=idx, padx=5, pady=5)
             self.input_entries[field] = entry
 
-        # Buttons
         button_frame = tk.Frame(self.root, bg=self.bg_color)
         button_frame.pack(fill="x", pady=10)
 
@@ -63,7 +58,6 @@ class FlightManagerApp:
         ttk.Button(button_frame, text="Move Down", command=lambda: self.move_flight(1)).pack(side="left", padx=5)
         ttk.Button(button_frame, text="Download Log", command=self.download_log).pack(side="left", padx=5)
 
-        # Auto-paste Flight Textbox
         paste_label = tk.Label(self.root, text="Auto-Paste Flight Details (Copy-Paste below):", font=("Arial", 12), bg=self.bg_color, fg=self.text_color)
         paste_label.pack(pady=10)
 
@@ -72,8 +66,7 @@ class FlightManagerApp:
 
         ttk.Button(self.root, text="Auto-Paste Flight", command=self.auto_paste_flight).pack(pady=5)
 
-        # Flight List (Including Squawk column)
-        self.fields.append("Squawk")  # Add Squawk to fields list
+        self.fields.append("Squawk")
         tree_frame = tk.Frame(self.root, bg=self.bg_color)
         tree_frame.pack(fill="both", expand=True, padx=10, pady=10)
 
@@ -84,7 +77,6 @@ class FlightManagerApp:
             self.tree.heading(col, text=col)
             self.tree.column(col, anchor="center", width=100)
 
-        # Add vertical scrollbar
         scrollbar = ttk.Scrollbar(tree_frame, orient="vertical", command=self.tree.yview)
         self.tree.configure(yscrollcommand=scrollbar.set)
         scrollbar.pack(side="right", fill="y")
@@ -95,7 +87,6 @@ class FlightManagerApp:
             self.display_message("All fields must be filled!")
             return
         
-        # Generate and add squawk code
         squawk_code = self.generate_squawk_code(flight["Flight Rules"])
         flight["Squawk"] = squawk_code
         
@@ -107,7 +98,6 @@ class FlightManagerApp:
         if flight_rules == "VFR":
             return "1200"
         else:
-            # Generate a random squawk code between 1000 and 7777
             while True:
                 squawk_code = str(random.randint(1000, 7777))
                 # Ensure the squawk code is not 7500, 7600, or 7700 and hasn't been used
@@ -124,7 +114,6 @@ class FlightManagerApp:
         index = self.tree.index(selected_item[0])
         flight = self.flights[index]
 
-        # Populate input fields with selected flight details
         for field, value in flight.items():
             self.input_entries[field].delete(0, tk.END)
             self.input_entries[field].insert(0, value)
@@ -153,11 +142,9 @@ class FlightManagerApp:
             self.tree.selection_set(self.tree.get_children()[new_index])
 
     def update_tree(self):
-        # Clear Treeview
         for item in self.tree.get_children():
             self.tree.delete(item)
 
-        # Add Flights to Treeview
         for flight in self.flights:
             self.tree.insert("", "end", values=tuple(flight[field] for field in self.fields))
 
@@ -167,7 +154,7 @@ class FlightManagerApp:
             return
 
         file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text Files", "*.txt")], title="Save Log File")
-        if not file_path:  # User canceled
+        if not file_path:
             return
 
         try:
@@ -188,7 +175,6 @@ class FlightManagerApp:
 
         try:
             details = self.parse_flight_input(raw_input)
-            # Generate and add squawk code
             squawk_code = self.generate_squawk_code(details["Flight Rules"])
             details["Squawk"] = squawk_code
             self.flights.append(details)
@@ -209,7 +195,6 @@ class FlightManagerApp:
                 value = value.strip()
                 details[key] = value
 
-            # Ensure all required keys are present
             required_keys = ["Username", "Callsign", "Aircraft", "Flight Rules", "Departing", "Arriving", "Route", "Flight Level"]
             for key in required_keys:
                 if key not in details:
@@ -223,14 +208,13 @@ class FlightManagerApp:
         """Displays a message below the input fields."""
         message_label = tk.Label(self.root, text=message, font=("Arial", 12), bg=self.bg_color, fg="red")
         message_label.pack(pady=5, after=self.tree)
-        self.root.after(3000, message_label.destroy)  # Remove after 3 seconds
+        self.root.after(3000, message_label.destroy)
 
     def clear_inputs(self):
         for field in self.fields:
             self.input_entries[field].delete(0, tk.END)
 
 
-# Run the Application
 if __name__ == "__main__":
     root = tk.Tk()
     app = FlightManagerApp(root)
