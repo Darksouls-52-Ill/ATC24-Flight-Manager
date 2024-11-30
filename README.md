@@ -4,21 +4,14 @@ You can edit each flight (or re-upload it to change the auto-generated squawk co
 All emergency codes such as 7500, 7600, and 7700 cannot be generated but all VFR flights automatically set the squawk to 1200.
 
 Example of a flight plan:
-
 Username: @username1
 
 Callsign: UAE1219
-
 Aircraft: B77W
-
 Flight Rules: IFR
-
 Departing: IRFD
-
 Arriving: ITKO
-
 Route: GPS Direct
-
 Flight Level: 050
 
 This is all public code, you may edit it and customize it or add to it (after you credit me in the code.)
