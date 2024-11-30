@@ -5,9 +5,13 @@ In the initial release, copy flight plans from the flight-plan channel in the di
 You can edit each flight (or re-upload it to change the auto-generated squawk code.)
 All emergency codes such as 7500, 7600, and 7700 cannot be generated but all VFR flights automatically set the squawk to 1200.
 
+Example of list of aircraft (with fake usernames)
+
+![image](https://github.com/user-attachments/assets/3c3199ce-4cae-4bae-9937-4af32ffcffc3)
+
+
 Example of a flight plan:
 Username: @username1
-
 Callsign: UAE1219
 Aircraft: B77W
 Flight Rules: IFR
