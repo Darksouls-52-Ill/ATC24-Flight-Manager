@@ -1,4 +1,4 @@
-In the initial release, copy and paste flight plans from flight-plan and paste it into the box. Then after you click Auto paste flight It will automatically add it to the list.
+In the initial release, copy and paste flight plans from the flight-plan channel in the discord and paste it into the box. Then after you click the Auto paste flight button It will automatically add it to the list.
 
 You can edit each flight (or re-upload it to change the auto-generated squawk code.)
 All emergency codes such as 7500, 7600, and 7700 cannot be generated but all VFR flights automatically set the squawk to 1200.
