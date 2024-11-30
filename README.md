@@ -1,3 +1,5 @@
+![atc24logo](https://github.com/user-attachments/assets/09a94511-68ac-4df2-aed5-e5f76c1b5ae7)
+
 In the initial release, copy flight plans from the flight-plan channel in the discord and paste it into the box. Then after you click the Auto paste flight button It will automatically add it to the list.
 
 You can edit each flight (or re-upload it to change the auto-generated squawk code.)
