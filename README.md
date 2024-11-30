@@ -15,6 +15,8 @@ Route: GPS Direct
 Flight Level: 050
 
 This is all public code, you may edit it and customize it or add to it (after you credit me in the code.)
-Please do not sell, redistribute or otherwise edit the code for malicious intent, you can either download the .exe (which might piss off your antivirus) or manually run the source code .py in Visual Studio Code.
+Please do not sell, redistribute or otherwise edit the code for malicious intent, you can either download the .exe (which might piss off your antivirus) or manually run the source code .py in Visual Studio Code. 
+Go  to the releases tab on the right side in the Github and download the .exe.
+
 
 Here is the discord invite to the server: https://discord.com/invite/atc24
