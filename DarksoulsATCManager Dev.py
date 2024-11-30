@@ -9,9 +9,8 @@ class FlightManagerApp:
         self.root.title("Flight Manager")
         self.root.geometry("900x600")
         self.flights = [] 
-        self.used_squawk_codes = set() 
+        self.used_squawk_codes = set()
 
-        # Colors
         self.bg_color = "#1B3B6F" 
         self.text_color = "#000000"  
         self.button_color = "#4A90E2" 
@@ -24,7 +23,7 @@ class FlightManagerApp:
     def create_ui(self):
         title_label = tk.Label(
             self.root,
-            text="Flight Manager",
+            text="Darks Flight Manager",
             font=("Arial", 24, "bold"),
             bg=self.bg_color,
             fg=self.text_color
@@ -49,7 +48,7 @@ class FlightManagerApp:
 
         button_style = ttk.Style()
         button_style.configure("TButton", background=self.button_color, foreground=self.text_color, padding=6, font=("Arial", 11, "bold"))
-        button_style.map("TButton", background=[("active", "#3566A8")])  # Button hover effect
+        button_style.map("TButton", background=[("active", "#3566A8")])
 
         ttk.Button(button_frame, text="Add Flight", command=self.add_flight).pack(side="left", padx=5)
         ttk.Button(button_frame, text="Edit Selected", command=self.edit_selected_flight).pack(side="left", padx=5)
@@ -100,7 +99,6 @@ class FlightManagerApp:
         else:
             while True:
                 squawk_code = str(random.randint(1000, 7777))
-                # Ensure the squawk code is not 7500, 7600, or 7700 and hasn't been used
                 if squawk_code not in {"7500", "7600", "7700"} and squawk_code not in self.used_squawk_codes:
                     self.used_squawk_codes.add(squawk_code)
                     return squawk_code
@@ -162,7 +160,7 @@ class FlightManagerApp:
                 for flight in self.flights:
                     for key, value in flight.items():
                         file.write(f"{key}: {value}\n")
-                    file.write("\n")  # Add a blank line between flights
+                    file.write("\n")
             self.display_message(f"Log saved successfully to {file_path}")
         except Exception as e:
             self.display_message(f"Error saving log: {str(e)}")
